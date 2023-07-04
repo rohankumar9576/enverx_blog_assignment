@@ -1,0 +1,27 @@
+{
+  "name": "enverx_blog_assignment",
+  "version": "1.0.0",
+  "description": "[![N|Solid](https://iili.io/Hi9giog.png)](https://www.enverx.com/)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rohankumar9576/enverx_blog_assignment.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rohankumar9576/enverx_blog_assignment/issues"
+  },
+  "homepage": "https://github.com/rohankumar9576/enverx_blog_assignment#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.3.1",
+    "nodemon": "^2.0.22"
+  }
+}
