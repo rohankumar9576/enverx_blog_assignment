@@ -1,52 +1,73 @@
-[![N|Solid](https://iili.io/Hi9giog.png)](https://www.enverx.com/)
+Install the required dependencies:
 
-EnverX offers a simple and convenient platform to fund early-stage projects
-and trade future carbon credits.
 
-## _Assginment For Backend Developer Role_
+    Run the following command to install the dependencies:
 
-### Instructions
-``` diff
-- Fork this repository
-- Take a fresh `pull`
-- Create a `development` branch
-- `Push` the updated code after task completion
-Note: Make sure to add proper `commit` messages
-```
+        npm install
 
-### Task Requirements
-1. Create a RESTful API for a simple blog application.
-2. Use Node.js and Express.js as the backend framework.
-3. Implement CRUD (Create, Read, Update, Delete) operations for blog posts.
-4. Store the blog posts in a dB
-5. Include validation for the API endpoints to ensure data integrity.
-6. Implement error handling and return appropriate HTTP status codes.
-7. Use Git for version control and host the project on GitHub.
-8. Write clear and concise documentation on how to set up and use the API.
-9. Use Typescript to get a Bonus point.
+    Configure the database:
+        Make sure you have MongoDB installed and running on your machine or have access to a remote MongoDB server.
+        Update the MongoDB connection details in the mongoose.connect() function located in the file where this API code is being used.
 
-### Functional Requirements
-1. Set up a new Node.js project and initialize it with a package.json file.
-2. Create the necessary Express.js routes and controllers for CRUD operations on blog posts.
+API Endpoints
 
-- `GET /posts` - Get all blog posts (Mandatory: Apply sorting based on created Date, blog name and filters based on category).
-- `GET /posts/:id` - Get a specific blog post by ID.
-- `POST /posts` - Create a new blog post.
-- `PUT /posts/:id` - Update an existing blog post.
-- `DELETE /posts/:id` - Delete a blog post.
+The API provides the following endpoints for managing blogs:
+Create a Blog
 
-3. Implement validation for the API endpoints to ensure the data is correct and complete.
-4. Handle errors gracefully and return appropriate HTTP status codes (e.g., 404 for not found, 500 for server errors, etc.).
-5. Test the API endpoints using a tool like Postman or cURL.
-6. Write a README.md file with instructions on setting up the project, running it, and using the API.
-7. Initialize a Git repository, commit your code regularly, and push it to GitHub.
-8. Optionally, include any additional features or improvements you think would enhance the API.
+    Endpoint: POST /blogs
+    Description: Creates a new blog with the provided data.
+    Request Body:
+        title (required): The title of the blog (string).
+        body (required): The body/content of the blog (string).
+        category (required): The category of the blog (string).
+    Response:
+        Status: 200 (OK) if the blog is created successfully.
+        Status: 400 (Bad Request) if any of the required fields are missing.
+        Status: 500 (Internal Server Error) if an error occurs during the creation process.
+        Body: JSON object containing the status, message, and data (created blog) if successful.
 
-### Timeline
-The estimated time to complete this assignment is 6-7 hours, but it may vary based on your familiarity and experience with the technologies.
+Get All Blogs
 
-### To Be Considered
-1. The submitted code should be plagiarism free otherwise your application will be disqualified
-2. Please complete the assignment and submit it to us by the submission deadline assigned to you. 
-3. follow the instructions carefully, as we will evaluate your code, documentation, and adherence to best practices. Once you have finished, please send us the GitHub repository link.
-4. If you have any questions or need further clarification, please don't hesitate to reach out to us at hr@enverx.com. We look forward to reviewing your work and discussing it with you in the next stage of the interview process.
+    Endpoint: GET /blogs
+    Description: Retrieves all the available blogs.
+    Query Parameters:
+        None
+    Response:
+        Status: 200 (OK) if the blogs are retrieved successfully.
+        Status: 404 (Not Found) if no blogs are found.
+        Status: 500 (Internal Server Error) if an error occurs during the retrieval process.
+        Body: JSON object containing the status and data (array of blogs) if successful.
+
+Get a Blog
+
+    Endpoint: GET /blogs/:id
+    Description: Retrieves a specific blog by its ID.
+    Path Parameters:
+        id (required): The ID of the blog to retrieve.
+    Response:
+        Status: 200 (OK) if the blog is retrieved successfully.
+        Status: 400 (Bad Request) if the provided blog ID is invalid.
+        Status: 404 (Not Found) if the blog is not found.
+        Status: 500 (Internal Server Error) if an error occurs during the retrieval process.
+        Body: JSON object containing the status and data (blog) if successful.
+
+Update a Blog
+
+    Endpoint: PUT /blogs/:id
+    Description: Updates a specific blog with new data.
+    Path Parameters:
+        id (required): The ID of the blog to update.
+    Request Body:
+        title: The new title of the blog (string).
+        body: The new body/content of the blog (string).
+        category: The new category of the blog (string).
+    Response:
+        Status: 200 (OK) if the blog is updated successfully.
+        Status: 400 (Bad Request) if the provided blog ID is invalid or any required fields are missing.
+        Status: 404 (Not Found) if the blog to update is not found.
+        Status: 500 (Internal Server Error) if an error occurs during the update process.
+        Body: JSON object containing the status and data (updated blog) if successful.
+
+Delete a Blog
+
+    Endpoint: `DELETE /blogs/:id
